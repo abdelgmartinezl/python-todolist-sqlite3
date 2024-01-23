@@ -59,7 +59,7 @@ def mostrar_lista_todo(id_usuario):
     cursor.execute('''
         SELECT id, titulo, descripcion, vencimiento, estado
         FROM tareas
-        WHERE id_usuario = ? ''', (id_usuario))
+        WHERE id_usuario = ? ''', (id_usuario,))
 
     tareas = cursor.fetchall()
 
@@ -67,8 +67,8 @@ def mostrar_lista_todo(id_usuario):
         print("Listado de Tareas:")
         for tarea in tareas:
             print(f"Tarea: {tarea[0]}, Titulo: {tarea[1]}, Descripcion: {tarea[2]}, Vencimiento: {tarea[3]}, Estado: {'Completada' if tarea[4] else 'Incompleta'}")
-        else:
-            print("Felicidades! No hay tareas")
+    else:
+        print("Felicidades! No hay tareas")
 
 if __name__ == "__main__":
     registrar_usuario('petra', 'abc123', 'petra@ejemplo.com')
